@@ -1,0 +1,12 @@
+<header>
+    <div class="menu">
+        <ul class="sidebar-main">
+            <li><a class="logo" href="{% url 'fake_csv:home_page' %}">Fake CSV</a></li>
+            <li><a class="sidebar left" href="{% url 'fake_csv:schema_list' %}">Schemas</a></li>
+            <li><a class="sidebar right bold" href="{% url 'registration:logged_out' %}">Logout</a></li>
+            <li class="user bold">
+              Hello, <strong style="color: #00000030">{{ user.username }}</strong>
+            </li>
+        </ul>
+    </div>
+</header>

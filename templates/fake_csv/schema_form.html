@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block title %}
+  {% if object %}
+      Edit
+  {% else %}
+      Add
+  {% endif %}
+{% endblock %}
+{% block header %}
+  {% include "includes/header.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="select4">
+      {% if object %}
+        <h2 class="hu1">Update A Schema</h2>
+      {% else %}
+        <h2 class="hu1">New Schema</h2>
+      {% endif %}
+    <form action="" method="post">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <input class="btn btn-primary sbc" type="submit" value="Submit">
+    </form>
+  </div>
+  <div class="select5">
+    <h2 class="hu2">Schema Columns</h2>
+    <div class="select6">
+      <form action="" method="post">
+        {% csrf_token %}
+        <div class="form_cols">
+          <label class="lbl-txt">Column Name
+            <input class="infrm" type="text">
+          </label>
+          <form action="" method="post">
+            {% csrf_token %}
+            {{ flds|crispy }}
+          </form>
+          <label class="lbl-txt">
+            <span>
+              Order
+            </span>
+            <input class="infrm-nmb" type="number">
+          </label>
+          <a style="color: #D9534F; text-decoration: none" href="#">Delete</a>
+        </div>
+      </form>
+      <input class="btn btn-primary sbc2" type="submit" value="Add column">
+    </div>
+  </div>
+
+{% endblock %}

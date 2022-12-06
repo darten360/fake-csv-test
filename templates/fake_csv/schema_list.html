@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Schemas
+{% endblock %}
+{% block header %}
+  {% include "includes/header.html" %}
+{% endblock %}
+{% block content %}
+  <h3 class="data">Data Schemas</h3>
+  <a style="color: white; text-decoration: none" class="btn btn-success add-sc" href="{% url 'fake_csv:schema_create' %}">New Schema</a>
+  <table class="table Sheets">
+    <tbody style="border: 1px solid #ECEEEF;">
+      {% for schema in schema_list %}
+        <tr>
+          <th class="th">
+            <div class="th1">{{ schema.id }}</div>
+          </th>
+          <td class="th">
+            <div class="th1">
+              <a  style="color: #0275D8; text-decoration: none" href="{% url 'fake_csv:schema_detail' schema.pk %}">{{ schema.name }}</a>
+            </div>
+          </td>
+          <td class="th">
+            <div class="th1">{{ schema.modified }}</div>
+          </td>
+          <td class="th">
+            <a class="edit" href="{% url 'fake_csv:schema_update' schema.pk %}">Edit schema</a>
+            <a class="delete" href="{% url 'fake_csv:schema_delete' schema.pk %}">Delete</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+    <thead>
+      <tr>
+        <th class="th">
+          <div class="th1">#</div>
+        </th >
+        <th class="th">
+          <div class="th1">Title</div>
+        </th>
+        <th class="th">
+          <div class="th1">Modified</div>
+        </th>
+        <th class="th">
+          <div class="th1">Actions</div>
+        </th>
+      </tr>
+    </thead>
+  </table>
+{% endblock %}
